@@ -45,8 +45,8 @@ export class UserController {
 
   @Get()
   @HttpCode(200)
-  getAllUser() {
-    const data = this.userService.getAllUser();
+  async getAllUser() {
+    const data = await this.userService.getAllUser();
     return responseHandler({
       success: true,
       statusCode: 200,

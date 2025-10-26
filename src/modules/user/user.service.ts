@@ -44,7 +44,14 @@ export class UserService {
   }
 
   async getAllUser() {
-    const allUsers = await this.userRepository.find();
+    const allUsers = await this.userRepository.find({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        image: true,
+      },
+    });
     return allUsers;
   }
 }
