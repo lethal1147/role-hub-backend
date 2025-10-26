@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './modules/user/user.module';
 import { TypeOrmConfigService } from './config/database/database.config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { LoggingInterceptor } from './shared/interceptors/logger.interceptor';
 
 @Module({
   imports: [
@@ -15,5 +17,8 @@ import { TypeOrmConfigService } from './config/database/database.config';
     AuthModule,
     UserModule,
   ],
+  providers: [{ provide: APP_INTERCEPTOR, useClass: LoggingInterceptor }],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {}
+}
