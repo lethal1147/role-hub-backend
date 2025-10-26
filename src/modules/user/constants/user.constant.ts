@@ -1,5 +1,5 @@
 export enum REGISTER_TYPE {
-  platform = 'platform',
+  platform = 'website',
   google = 'google',
   github = 'github',
 }

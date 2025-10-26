@@ -6,6 +6,8 @@ import { UserModule } from './modules/user/user.module';
 import { TypeOrmConfigService } from './config/database/database.config';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './shared/interceptors/logger.interceptor';
+import { MulterModule } from '@nestjs/platform-express';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -16,6 +18,9 @@ import { LoggingInterceptor } from './shared/interceptors/logger.interceptor';
     }),
     AuthModule,
     UserModule,
+    MulterModule.register({
+      dest: join(__dirname, '..', 'uploads'),
+    }),
   ],
   providers: [{ provide: APP_INTERCEPTOR, useClass: LoggingInterceptor }],
 })

@@ -5,9 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  BeforeInsert,
 } from 'typeorm';
 import { IsEmail, IsEnum, IsOptional } from 'class-validator';
 import { REGISTER_TYPE } from '../constants/user.constant';
+import * as bcrypt from 'bcrypt';
 
 @Entity('user')
 export class User {
@@ -40,4 +42,9 @@ export class User {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
 }
