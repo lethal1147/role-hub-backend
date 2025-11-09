@@ -32,7 +32,16 @@ export class User {
   register_type: string;
 
   @Column({ nullable: true })
-  image: string;
+  image: string | null;
+
+  @Column({ default: false })
+  is_email_verified: boolean;
+
+  @Column({ nullable: true })
+  otp_code: string | null;
+
+  @Column({ nullable: true })
+  otp_expires_at: Date | null;
 
   @DeleteDateColumn({ nullable: true })
   deleted_at: Date;
