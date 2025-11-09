@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common';
 import { MailerModule } from '@nestjs-modules/mailer';
-import { ConfigService } from '@nestjs/config';
+import { BullModule } from '@nestjs/bullmq';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EmailService } from './email.service';
+import { EmailProcessor } from './processors/email.processor';
 
 @Module({
   imports: [
+    ConfigModule,
     MailerModule.forRootAsync({
+      imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         transport: {
           host: configService.get<string>('SMTP_HOST'),
@@ -22,8 +26,11 @@ import { EmailService } from './email.service';
       }),
       inject: [ConfigService],
     }),
+    BullModule.registerQueue({
+      name: 'email',
+    }),
   ],
-  providers: [EmailService],
+  providers: [EmailService, EmailProcessor],
   exports: [EmailService],
 })
 export class EmailModule {}
