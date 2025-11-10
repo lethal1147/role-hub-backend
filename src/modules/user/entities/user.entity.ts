@@ -31,16 +31,16 @@ export class User {
   @IsEnum(REGISTER_TYPE)
   register_type: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   image: string | null;
 
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   is_email_verified: boolean;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   otp_code: string | null;
 
-  @Column({ nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   otp_expires_at: Date | null;
 
   @DeleteDateColumn({ nullable: true })
