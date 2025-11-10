@@ -6,7 +6,7 @@ import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './local.strategy';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../user/entities/user.entity';
-import { EmailModule } from '../email/email.module';
+import { EmailModule } from '../../shared/services/email/email.module';
 
 @Module({
   imports: [

@@ -9,7 +9,7 @@ import * as bcrypt from 'bcrypt';
 import { User } from '../user/entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { EmailService } from '../email/email.service';
+import { EmailService } from '../../shared/services/email/email.service';
 import { generateOtpData } from 'src/shared/utils/otp.util';
 
 @Injectable()

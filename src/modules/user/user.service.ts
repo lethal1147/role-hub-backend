@@ -5,8 +5,8 @@ import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { R2Service } from 'src/shared/services/r2/r2.service';
 import { R2_CATEGORY_NAME } from 'src/shared/services/r2/r2.constant';
-import { EmailService } from '../email/email.service';
 import { generateOtpData } from 'src/shared/utils/otp.util';
+import { EmailService } from 'src/shared/services/email/email.service';
 
 @Injectable()
 export class UserService {

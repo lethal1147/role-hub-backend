@@ -8,6 +8,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { BullModule } from '@nestjs/bullmq';
 import { join } from 'path';
 import { getQueueConfig } from './config/queue/queue.config';
+import { BullBoardConfigModule } from './config/bullboard/bullboard.module';
 import { PublicModule } from './modules/public/public.module';
 // import { AdminModule } from './modules/admin/admin.module';
 
@@ -26,6 +27,7 @@ import { PublicModule } from './modules/public/public.module';
     MulterModule.register({
       dest: join(__dirname, '..', 'uploads'),
     }),
+    BullBoardConfigModule,
     PublicModule,
     // AdminModule,
   ],

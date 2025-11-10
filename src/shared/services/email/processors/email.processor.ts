@@ -32,7 +32,9 @@ export class EmailProcessor extends WorkerHost {
       this.logger.debug(`__dirname is: ${__dirname}`);
 
       if (!fs.existsSync(templatePath)) {
-        throw new Error(`Template not found: ${job.data.template} at path: ${templatePath}`);
+        throw new Error(
+          `Template not found: ${job.data.template} at path: ${templatePath}`,
+        );
       }
 
       const mjmlTemplate = fs.readFileSync(templatePath, 'utf-8');
