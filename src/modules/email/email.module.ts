@@ -14,10 +14,14 @@ import { EmailProcessor } from './processors/email.processor';
         transport: {
           host: configService.get<string>('SMTP_HOST'),
           port: configService.get<number>('SMTP_PORT'),
-          secure: configService.get<boolean>('SMTP_SECURE', false),
+          secure: false, // Use STARTTLS
+          requireTLS: true, // Force TLS
           auth: {
             user: configService.get<string>('SMTP_USER'),
             pass: configService.get<string>('SMTP_PASS'),
+          },
+          tls: {
+            rejectUnauthorized: false, // Accept self-signed certificates
           },
         },
         defaults: {

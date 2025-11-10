@@ -16,7 +16,7 @@ import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import { RegisterBody } from './types/user.type';
 
-@Controller('user')
+@Controller('api/public/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

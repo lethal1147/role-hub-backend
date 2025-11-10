@@ -4,7 +4,7 @@ import { VerifyOtpDto } from './dto/verify-otp.dto';
 import { ResendOtpDto } from './dto/resend-otp.dto';
 import { responseHandler } from 'src/shared/handlers/response.handler';
 
-@Controller('auth')
+@Controller('api/public/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
@@ -12,7 +12,7 @@ export class AuthController {
   async verifyOtp(@Body() verifyOtpDto: VerifyOtpDto) {
     const user = await this.authService.verifyOtp(
       verifyOtpDto.email,
-      verifyOtpDto.otp_code,
+      verifyOtpDto.otpCode,
     );
     return responseHandler({
       message: 'Email verified successfully',
